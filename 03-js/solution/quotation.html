@@ -1,16 +1,18 @@
 <!DOCTYPE html>
+<!-- saved from url=(0040)https://faijiuy.github.io/quotation.html -->
 <html lang="en">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-
     <title>Sample Quotation</title>
-    <meta name="description" content="Company quotation">
+    <meta name="description" content="The HTML5 Herald">
     <meta name="author" content="SitePoint">
 
     <link rel="stylesheet" href="./css/styles.css">
-
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
     <b>Your company name here
         <span style="float:right;font-size:30px;">
             QUOTATION
@@ -107,7 +109,7 @@
                 <th>Amount</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody  id="dataTable">
             <tr>
                 <td class="data r">1.5</td>
                 <td class="data">Stock Item Example 0001</td>
@@ -137,7 +139,8 @@
                 <td class="data r">200.00</td>
                 <td class="data r">600.00</td>
             </tr>
-
+        </tbody>
+        <tfoot>
             <tr>
                 <td class="data"><br></td>
                 <td class="data"></td>
@@ -187,7 +190,9 @@
             </tr>
             <tr>
                 <td colspan="3" class="data2 r colo"> Sales Tax</td>
-                <td colspan="1" class="data2 r" id="bottom-line">430.00</td>
+                <td colspan="1" class="data2 r" id="bottom-line">
+                    <span id="salesTax">430.00</span>
+                </td>
             </tr>
             <tr>
                 <td colspan="3" class="data2 r colo"> Shipping &amp; Handling</td>
@@ -197,9 +202,10 @@
                 <td colspan="3" class="data2 r colo"> Total Due</td>
                 <td colspan="1" class="data2 r" id="bottom-line">4,730.00</td>
             </tr>
-        </tbody>
+        </tfoot>
     </table>
 
+    <button id="addButton">Add Item</button>
     <br>
 
     <p class="cen">
@@ -212,6 +218,7 @@
 
 
     <footer>Apitsara Choppradit</footer>
+
 
     </body>
 
