@@ -13,11 +13,15 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
-    <b>Your company name here
+</head>
+
+<body>
+
+    <body>Your company name here
         <span style="float:right;font-size:30px;">
             QUOTATION
         </span>
-    </b>
+    </body>
 
     <p>
         Your company address line1 here
@@ -34,7 +38,9 @@
         Phone: 12345678
         <span class="tab">Mobile: 12345678</span>
         <span style="float: right;">
+            <span id="currentDate">
             2010/7/27
+        </span>
         </span>
     </p>
 
@@ -100,6 +106,8 @@
 
     <br>
 
+    <button id="addButton">Add Item</button>
+
     <table class="center">
         <thead>
             <tr>
@@ -109,36 +117,8 @@
                 <th>Amount</th>
             </tr>
         </thead>
-        <tbody  id="dataTable">
-            <tr>
-                <td class="data r">1.5</td>
-                <td class="data">Stock Item Example 0001</td>
-                <td class="data r">1,000.00</td>
-                <td class="data r">1,500.00</td>
-            </tr>
-            <tr>
-                <td class="data r">1</td>
-                <td class="data">Stock Item Example 0002</td>
-                <td class="data r">2,000.00</td>
-                <td class="data r">2,000.00</td>
-            </tr>
-            <tr>
-                <td class="data r">1</td>
-                <td class="data">Service Charge Invoicing Item 001</td>
-                <td class="data r">100.00</td>
-                <td class="data r">200.00</td>
-            </tr>
-            <tr>
-                <td class="data r">1</td>
-                <td class="data">
-                    Service Charge Invoicing Item 002<br>
-                    Additional line 1 for this item<br>
-                    Additional line 2 for this item
+        <tbody id="dataTable">
 
-                </td>
-                <td class="data r">200.00</td>
-                <td class="data r">600.00</td>
-            </tr>
         </tbody>
         <tfoot>
             <tr>
@@ -186,7 +166,11 @@
 
             <tr id="sub-total">
                 <td colspan="3" class="data2 r colo"> Subtotal</td>
-                <td colspan="1" class="data2 r" id="bottom-line">4,300.00</td>
+                <td colspan="1" class="data2 r" id="bottom-line">
+                    <span id="subTotal">
+                    4,300.00
+                </span>
+                </td>
             </tr>
             <tr>
                 <td colspan="3" class="data2 r colo"> Sales Tax</td>
@@ -200,12 +184,15 @@
             </tr>
             <tr>
                 <td colspan="3" class="data2 r colo"> Total Due</td>
-                <td colspan="1" class="data2 r" id="bottom-line">4,730.00</td>
+                <td colspan="1" class="data2 r" id="bottom-line">
+                    <span id="totalDue">
+                    4,730.00
+                </span>
+                </td>
             </tr>
         </tfoot>
     </table>
 
-    <button id="addButton">Add Item</button>
     <br>
 
     <p class="cen">
@@ -220,6 +207,6 @@
     <footer>Apitsara Choppradit</footer>
 
 
-    </body>
+</body>
 
 </html>
