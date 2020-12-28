@@ -94,7 +94,6 @@
         </div>
         <div style="background-color:white; margin-left: 410px;">
             <?php
-            // Get a file handle
             $file = fopen("provinces.csv", "r");
             $counter = 0;
             $provinces = array();
@@ -107,16 +106,12 @@
                 // echo print_r($line).'<br/>';
                 array_push($provinces, $line);
             }
-
-
             // define sorting method
             function cmp($a, $b)
             {
                 return strcmp($a[2], $b[2]);
             }
-
             usort($provinces, "cmp");
-
             fclose($file);
             ?>
 
@@ -124,16 +119,48 @@
             Province:
             <select name="province">
                 <?php
-                foreach($provinces as $p) {
+                foreach ($provinces as $p) {
                     echo "<option value='{$p[0]}'>{$p[2]}</option>";
                 }
                 ?>
             </select>
-            <br/>
+            <br />
+
+            <?php
+            $file = fopen("district.csv", "r");
+            $counter = 0;
+            $districts = array();
+            while (!feof($file)) {
+                $line = fgetcsv($file);
+                $counter++;
+
+                if ($counter == 1) continue;
+                array_push($districts, $line);
+            }
+            // define sorting method
+            function cmp2($a, $b)
+            {
+                return strcmp($a[2], $b[2]);
+            }
+            usort($districts, "cmp2");
+            fclose($file);
+
+            // echo '<pre>';
+            // echo var_dump($districts);
+            // echo '</pre>';
+
+            ?>
             District:
-            <br/>
+            <select name="district">
+                <?php
+                foreach ($districts as $d) {
+                    echo "<option value='{$d[0]}'>{$d[2]}</option>";
+                }
+                ?>
+            </select>
+            <br />
             Subdistrict:
-            <br/>
+            <br />
         </div>
 
     </div>
