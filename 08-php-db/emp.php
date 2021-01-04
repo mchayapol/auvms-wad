@@ -26,27 +26,6 @@ if (mysqli_num_rows($result) > 0) {
 } else {
   echo "0 results";
 }
-?>
-<hr/>
-<h1>Departments</h1>
-<?php
-
-// Departments
-$sql = "SELECT * FROM departments LIMIT 10";
-$result = mysqli_query($conn, $sql);
-
-if (mysqli_num_rows($result) > 0) {
-  // output data of each row
-  $counter = 0;
-  while($row = mysqli_fetch_assoc($result)) {
-    echo "id: " . $row["dept_no"]. " - Name: " . $row["dept_name"]."<br>";
-    $counter++;
-  }
-  echo "$counter results";
-} else {
-  echo "0 results";
-}
-
 
 mysqli_close($conn);
 
