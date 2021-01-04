@@ -1,4 +1,5 @@
-USE heroku_07c44eac08d0ae1;
+CREATE DATABASE IF NOT EXISTS employees;
+USE employees;
 
 SELECT 'CREATING DATABASE STRUCTURE' as 'INFO';
 
