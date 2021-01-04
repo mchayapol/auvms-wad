@@ -84,10 +84,10 @@ CREATE OR REPLACE VIEW current_dept_emp AS
 
 SELECT 'CREATING DATABASE STRUCTURE' as 'INFO';
 
-SELECT 'LOADING departments' as 'INFO';
-source departments.dump ;
 SELECT 'LOADING employees' as 'INFO';
 source employees.dump ;
+SELECT 'LOADING departments' as 'INFO';
+source departments.dump ;
 SELECT 'LOADING dept_emp' as 'INFO';
 source dept_emp.dump ;
 SELECT 'LOADING dept_manager' as 'INFO';
