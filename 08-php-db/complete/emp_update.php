@@ -1,5 +1,5 @@
 <?php
-include_once("config.php");
+include_once("../config.php");
 include_once("select-department.php");
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -106,7 +106,7 @@ $result = mysqli_query($conn, $sql);
             </td>
           </tr>
         </table>
-        <input type="submit" value="Create" />
+        <input type="submit" value="Update" />
       </form>
     </td>
   </tr>

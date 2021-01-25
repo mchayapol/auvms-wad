@@ -23,9 +23,9 @@ if (isset($_POST['cmd']) && $_POST['cmd'] == 'add') {
             VALUES ('$emp_no','$birth_date','$first_name','$last_name','$gender','$hire_date')";
             
     if ($conn->query($sql) === TRUE) {
-        echo "Success<br/>";
+        echo "Success<br/>$sql<br/>";
     } else {
-      echo "Error: " . $sql . "<br>" . $conn->error;
+      echo "Error: " . $sql . "<br/>" . $conn->error;
     }
   }
   

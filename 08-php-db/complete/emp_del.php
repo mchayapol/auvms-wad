@@ -1,5 +1,5 @@
 <?php
-require_once("config.php");
+require_once("../config.php");
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -12,12 +12,11 @@ if (isset($_POST['cmd']) && $_POST['cmd'] == 'del') {
   // Delete employee
   $emp_no = $_POST['emp_no'];
   $sql = "DELETE FROM employees WHERE emp_no = $emp_no";
-  $result = mysqli_query($conn, $sql);
 
-  if ($conn->query($sql) === TRUE) {
+  if (mysqli_query($conn, $sql)) {
     echo "Record deleted successfully";
   } else {
-    echo "Error deleting record: " . $conn->error;
+    echo "Error deleting record: " . mysqli_connect_error();
   }
 }
 ?>
