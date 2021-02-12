@@ -11,7 +11,7 @@ export default function RegistrationForm() {
   const [amphurList, setAmphurList] = useState()
 
   const handleProvinceChange = (obj) => {
-    console.log('handleProvinceChange', obj)
+    // console.log('handleProvinceChange', obj)
     setProvince(obj)
     setAmphur(null)
     setAmphurList(obj.amphur)
