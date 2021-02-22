@@ -7,8 +7,7 @@ import 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
-import './App.css'
-
+import './App.css';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -17,101 +16,99 @@ const firebaseConfig = {
   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_APP_ID
+};
+
+if (firebase.apps.length === 0) {
+  firebase.initializeApp(firebaseConfig)
 }
-
-
-
-firebase.initializeApp(firebaseConfig)
-
 const auth = firebase.auth();
 const firestore = firebase.firestore();
 
 function App() {
-  const [user] = useAuthState(auth);
+  const [user] = useAuthState(auth)
+
+  // if (user) {
+  //   //// then
+  // } else {
+  //   /// else 
+  // }
+
+  // user ? then : else
 
   return (
-    <div className="App border-bg h-screen">
-      <SignOut />
-      <section className="flex justify-center items-center h-screen">
-        {user ? <ChatRoom /> : <SignIn />}
-      </section>
+    <div className="App">
+      <h1>AUVMS Chatroom</h1>
+      {user ?
+        <div>
+          <Chatroom />
+          <SignOut />
+        </div>
+        : <SignIn />}
+
     </div>
   );
 }
 
+function Chatroom() {
+  const messagesRef = firestore.collection('messages')
+  const query = messagesRef
+    .orderBy('createdAt', 'asc')
+    .limitToLast(5)
+  const [messages] = useCollectionData(query, { idField: 'id' })
+  const [msg, setMsg] = useState('')
 
-function SignIn() {
-  const signInWithGoogle = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    auth.signInWithPopup(provider);
-  }
-  return (
-    <div >
-      <h1>Enter Clubhouse</h1>
-      <button onClick={signInWithGoogle}>
-        <img src="https://icon-library.com/images/sign-in-with-google-icon/sign-in-with-google-icon-3.jpg" alt='Google Icon' />
-      </button>
-    </div>
-  )
-}
-
-function SignOut() {
-  return auth.currentUser && (
-    <div>
-      <button onClick={() => auth.signOut()}>Leave Clubhouse</button>
-    </div>
-  )
-}
-
-function ChatRoom() {
-  const dummy = useRef();
-  const messagesRef = firestore.collection('messages');
-  const query = messagesRef.orderBy('createdAt', 'asc').limitToLast(25);
-
-  const [messages] = useCollectionData(query, { idField: 'id' });
-  const [formValue, setFormValue] = useState('');
-
-  const scrollToBottom = () => {
-    dummy.current.scrollIntoView({ behavior: 'smooth' });
-  }
-
-  useEffect(scrollToBottom, [messages]);
-
+  // asynchronous function
   const sendMessage = async (e) => {
-    e.preventDefault();
+    e.preventDefault() // prevent unexpected input during this function execution
 
-    const { displayName, uid, photoURL } = auth.currentUser;
+    // const displayName = auth.currentUser.displayName
+    // const uid = auth.currentUser.uid
+    // const photoURL = auth.currentUser.photoURL
+    const { displayName, uid, photoURL } = auth.currentUser
 
     await messagesRef.add({
       user: displayName,
-      body: formValue,
+      body: msg,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       uid: uid,
       photoURL: photoURL
     })
 
-    setFormValue('');
-    dummy.current.scrollIntoView({ behavior: 'smooth' });
+    setMsg('')
+    // dummy.current.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  const handleOnChange = (e) => {
+    console.log(e.target.value)
+    setMsg(e.target.value)
+  }
+
+  const handleKeyPress = (e) => {
+    if (e.charCode === 13) {
+      // console.log("Enter is pressed.", e.target.value)
+      if (e.target.value.trim() !== '') {
+        sendMessage(e)
+      }
+    }
   }
 
   return (
     <div>
       <div>
-        {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
-        <span ref={dummy}></span>
+        {messages && messages.map(m => <ChatMessage message={m} />)}
       </div>
-
-      <form onSubmit={sendMessage}>
-        <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="Say something" />
-        <button type="submit" disabled={!formValue}>send</button>
-      </form>
-    </div>
+      <input
+        value={msg}
+        onChange={handleOnChange}
+        onKeyPress={handleKeyPress}
+        placeholder="Say something" />
+      <button onClick={sendMessage}>send</button>
+    </div >
   )
 }
 
 function ChatMessage(props) {
-  const { user, body, uid, photoURL, createdAt } = props.message;
-
+  const { user, body, uid, photoURL, createdAt } = props.message
   return (
     <table>
       <tbody>
@@ -125,7 +122,35 @@ function ChatMessage(props) {
           <td>{body}</td>
         </tr>
       </tbody>
-    </table>
+    </table >
+  )
+}
+
+function SignOut() {
+  // if (auth.currentUser)
+  //   return (...)
+  // else
+  //   return ()
+
+  return auth.currentUser && (
+    <div>
+      <button onClick={() => auth.signOut()}>Sign Out</button>
+    </div>
+  )
+}
+
+function SignIn() {
+  const signInWithGoogle = () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider);
+  }
+
+  return (
+    <div>
+      <button onClick={signInWithGoogle}>
+        <img width="400" src="google-sign-in-button.png" alt="Sign in with Google" />
+      </button>
+    </div>
   )
 }
 
