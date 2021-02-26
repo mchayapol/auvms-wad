@@ -1,0 +1,4 @@
+λ echo %LOCALAPPDATA%
+C:\Users\Chayapol Moemeng\AppData\Local
+1. Create symbolic link - without space
+2. set LOCALAPPDATA=c:\Users\Chayapol
