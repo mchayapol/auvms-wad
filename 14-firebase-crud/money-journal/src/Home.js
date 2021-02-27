@@ -42,12 +42,8 @@ export default function Home() {
       <header className="App-header">
         <h1>Money Journal</h1>
         <button onClick={signInWithGoogle}>
-          <img src="https://icon-library.com/images/sign-in-with-google-icon/sign-in-with-google-icon-3.jpg" alt='Google Icon' />
+          <img height="40" src="https://icon-library.com/images/sign-in-with-google-icon/sign-in-with-google-icon-3.jpg" alt='Google Icon' />
         </button>
-
-        <Link to="/journal">
-          <button>Sign In</button>
-        </Link>
       </header>
       <footer>
         Mode: {process.env.NODE_ENV}<br />
