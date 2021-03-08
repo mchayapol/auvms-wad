@@ -40,7 +40,7 @@ export default function Home() {
   return (
     <Container>
       <header className="App-header">
-        <h1>Money Journal</h1>
+        <h1>Money Journey</h1>
         <button onClick={signInWithGoogle}>
           <img height="40" src="https://icon-library.com/images/sign-in-with-google-icon/sign-in-with-google-icon-3.jpg" alt='Google Icon' />
         </button>
