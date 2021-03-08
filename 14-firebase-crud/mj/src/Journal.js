@@ -287,7 +287,6 @@ export default function Journal() {
                   onChange={handleCategoryChange}
                   getOptionLabel={x => x.name}
                   getOptionValue={x => x.id}
-                  ref={register}
                 />
               </Col>
             </Row>
