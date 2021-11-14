@@ -1,0 +1,4 @@
+{
+  "appService.defaultWebAppToDeploy": "/subscriptions/f7df6186-a09d-4a8f-bdc2-48ad32fadad8/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/wad-api",
+  "appService.deploySubpath": "."
+}
