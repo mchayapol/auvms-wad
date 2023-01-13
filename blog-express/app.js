@@ -8,6 +8,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var blogsRouter = require('./routes/api/blogs');
 
+const mongoose = require('mongoose');
+mongoose.connect(process.env.MONGODB_URI);
 
 var app = express();
 

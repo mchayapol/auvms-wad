@@ -3,9 +3,8 @@ var express = require('express');
 var router = express.Router();
 const mongoose = require('mongoose');
 
-/* GET home page. */
-mongoose.connect(process.env.MONGODB_URI);
-// mongoose.set('strictQuery', false);
+// mongoose.connect(process.env.MONGODB_URI);
+
 const BlogSchema = new mongoose.Schema({
   topic: String,
   content: String,
