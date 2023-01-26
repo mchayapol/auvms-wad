@@ -1,4 +1,7 @@
 import * as React from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button } from 'react-bootstrap';
+
 
 const coffeeImage = {
     borderRadius: "5%",
@@ -48,6 +51,7 @@ export default function Coffee() {
     return (
         <div style={{ margin: "1rem" }}>
             <h1>Coffee</h1>
+            <Button>CLICK ME</Button>
             <main>
                 {coffeeTitles}
             </main>
