@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react'
-import './App.css'
+import './CarList.css'
 import { DuoSlider } from './components/DualSlider';
 
 function CarCard({ car }) {

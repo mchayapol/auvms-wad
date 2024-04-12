@@ -73,7 +73,6 @@ export const DuoSlider = ({ min, max, step, gap, onChange }) => {
           <input
             id='from_input'
             type="number"
-            id="fromInput"
             ref={fromInputRef}
             onChange={() => {
               const from = parseInt(fromInputRef.current.value)
@@ -90,7 +89,6 @@ export const DuoSlider = ({ min, max, step, gap, onChange }) => {
           <input
             id="to_input"
             type="number"
-            id="toInput"
             ref={toInputRef}
             onChange={() => {
               const from = parseInt(fromInputRef.current.value)
