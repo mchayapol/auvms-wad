@@ -1,3 +1,2 @@
-# AUVMS Web Application Development
-[Vincent Mary School of Science and Technology](https://www.scitech.au.edu)  
-[Assumption University](https://www.au.edu)
+# Web Application Development
+This course is designed to provide students with the knowledge and skills to develop web applications using modern web development technologies. The course covers the following topics: HTML, CSS, JavaScript, jQuery, AJAX, JSON, MongoDB, and Bootstrap. Students will learn how to develop web applications using a combination of client-side and server-side technologies using React.js and Next.js respectively. The course will also cover best practices for web application development, including responsive design, security, and performance optimization.
