@@ -40,7 +40,7 @@ export default function Root() {
   return (
     <>
       <div id="sidebar">
-        <h1>React Router Contacts</h1>
+        <h1>Carada</h1>
         <div>
           <Form id="search-form" role="search">
             <input
